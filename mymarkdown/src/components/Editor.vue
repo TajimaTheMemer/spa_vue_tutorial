@@ -14,9 +14,9 @@ export default {
   name: 'editor',
   props: ['user'],
   data () {
-      return {
-        markdown: "",
-      }
+    return {
+      markdown: "",
+    }
   },
   methods: {
     logout: function() {

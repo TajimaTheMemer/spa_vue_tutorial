@@ -9,7 +9,7 @@
     name: 'home',
     data () {
       return {
-      msg: 'Welcome to MyMarkdown'
+        msg: 'Welcome to MyMarkdown'
       }
     },
     created: function() {
