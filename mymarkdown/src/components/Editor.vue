@@ -8,8 +8,8 @@
         <div class="memoList" v-for="(memo, index) in memos" @click="selectMemo(index)" :data-selected="index==selectedIndex">
           <p class="memoTitle">{{displayTitle(memo.markdown)}}</p>
         </div>
-        <button class="addMemoBtn"@click="addMemo"> メモの追加 </button>
-        <button class="deleteMemoBtn"v-if="memos.length>1"@click="deleteMemo"> 選択中のメモの削 除 </button>
+        <button class="addMemoBtn" @click="addMemo"> メモの追加 </button>
+        <button class="deleteMemoBtn" v-if="memos.length>1" @click="deleteMemo"> 選択中のメモの削 除 </button>
         <button class="saveMemosBtn" @click="saveMemos"> メモの保存 </button>
       </div>
       <textarea class="markdown" v-model="memos[selectedIndex].markdown"></textarea>
@@ -32,6 +32,7 @@ export default {
     }
   },
   created: function(){
+    firebase
     .database()
     .ref('memos/' + this.user.uid)
     .once('value')
@@ -65,7 +66,7 @@ export default {
     displayTitle: function(text){
       return text.split(/\n/)[0];
     },
-    seveMemos:function(){
+    saveMemos:function(){
       firebase
         .database()
         .ref('memos/' + this.user.uid)
